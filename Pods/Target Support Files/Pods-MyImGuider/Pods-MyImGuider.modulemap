@@ -1,0 +1,6 @@
+framework module Pods_MyImGuider {
+  umbrella header "Pods-MyImGuider-umbrella.h"
+
+  export *
+  module * { export * }
+}

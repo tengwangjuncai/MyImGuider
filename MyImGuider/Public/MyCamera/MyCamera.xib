@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyCamera" customModule="MyImGuider" customModuleProvider="target">
+            <connections>
+                <outlet property="changeBtn" destination="078-ta-knb" id="dwY-ec-gms"/>
+                <outlet property="flashBtn" destination="bzK-9I-juQ" id="di1-4n-PAH"/>
+                <outlet property="photoButton" destination="OUy-o1-Hev" id="8Xd-6o-3cq"/>
+                <outlet property="thumbImageView" destination="CxB-dN-gio" id="fm2-Rv-eUg"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzK-9I-juQ">
+                    <rect key="frame" x="16" y="16" width="35" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="35" id="1Ht-64-Ux0"/>
+                        <constraint firstAttribute="height" constant="35" id="6TC-uc-YUa"/>
+                    </constraints>
+                    <state key="normal" image="闪光灯-关.png"/>
+                    <connections>
+                        <action selector="flashAction:" destination="-1" eventType="touchUpInside" id="mKr-71-dq7"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="078-ta-knb">
+                    <rect key="frame" x="315" y="16" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="PT4-fm-eG1"/>
+                        <constraint firstAttribute="height" constant="44" id="nwX-01-SQs"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="icon-摄像头切换-3.png"/>
+                    <connections>
+                        <action selector="changeCamera:" destination="-1" eventType="touchUpInside" id="G9C-PP-eOi"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OUy-o1-Hev">
+                    <rect key="frame" x="157.5" y="548" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="Ri9-49-6iF"/>
+                        <constraint firstAttribute="width" constant="60" id="lIY-MH-amO"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="photograph"/>
+                    <connections>
+                        <action selector="takePhotosAction:" destination="-1" eventType="touchUpInside" id="4yD-ag-oUu"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1SV-gH-kOm">
+                    <rect key="frame" x="285" y="555.5" width="45" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="2eL-7I-8Dt"/>
+                        <constraint firstAttribute="width" constant="45" id="7V7-Qj-ASi"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="back:" destination="-1" eventType="touchUpInside" id="ySt-o8-xze"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_squ" translatesAutoresizingMaskIntoConstraints="NO" id="CxB-dN-gio">
+                    <rect key="frame" x="16" y="555.5" width="45" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="6fW-yy-QJl"/>
+                        <constraint firstAttribute="width" constant="45" id="e0u-11-RfT"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="078-ta-knb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="16" id="2fe-j4-VgG"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="078-ta-knb" secondAttribute="trailing" constant="16" id="Eoj-yv-a9i"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1SV-gH-kOm" secondAttribute="trailing" constant="45" id="V9e-3X-NF9"/>
+                <constraint firstItem="1SV-gH-kOm" firstAttribute="centerY" secondItem="OUy-o1-Hev" secondAttribute="centerY" id="c3v-4B-0TI"/>
+                <constraint firstItem="CxB-dN-gio" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="hPU-bP-maq"/>
+                <constraint firstItem="bzK-9I-juQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="nq4-fH-QAf"/>
+                <constraint firstItem="CxB-dN-gio" firstAttribute="centerY" secondItem="OUy-o1-Hev" secondAttribute="centerY" id="op5-um-Q8d"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="OUy-o1-Hev" secondAttribute="bottom" constant="59" id="q9f-N3-tkd"/>
+                <constraint firstItem="bzK-9I-juQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="16" id="xEI-Ee-dkG"/>
+                <constraint firstItem="OUy-o1-Hev" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="zCN-W7-38T"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="199.19999999999999" y="163.26836581709148"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon-摄像头切换-3.png" width="48" height="48"/>
+        <image name="photograph" width="16" height="16"/>
+        <image name="placeholder_squ" width="540" height="540"/>
+        <image name="闪光灯-关.png" width="32" height="28"/>
+    </resources>
+</document>

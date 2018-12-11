@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="250" id="KGk-i7-Jjw" customClass="CityLineCell" customModule="MyImGuider" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="352" height="250"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="352" height="249.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NQ5-rv-5aW">
+                        <rect key="frame" x="16" y="0.0" width="320" height="233.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_rec" translatesAutoresizingMaskIntoConstraints="NO" id="MY7-Af-DCQ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="MY7-Af-DCQ" secondAttribute="height" multiplier="16:9" id="E25-Qw-afX"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xzm-nV-gYw">
+                                <rect key="frame" x="16" y="196" width="232" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="6MN-Lf-MEu">
+                                <rect key="frame" x="264" y="196" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="KDg-E7-66u"/>
+                                    <constraint firstAttribute="width" constant="40" id="cdP-H3-x6G"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mask" translatesAutoresizingMaskIntoConstraints="NO" id="hfD-rM-fVS">
+                                <rect key="frame" x="0.0" y="0.0" width="89" height="34"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--个讲解" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uG-GC-2wR">
+                                <rect key="frame" x="14" y="8.5" width="56" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uYx-Qo-fdl">
+                                <rect key="frame" x="260" y="120" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="EOB-r9-VPo"/>
+                                    <constraint firstAttribute="width" constant="50" id="OZb-ug-N4y"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="6MN-Lf-MEu" secondAttribute="trailing" constant="16" id="0IW-Kj-Djs"/>
+                            <constraint firstItem="xzm-nV-gYw" firstAttribute="top" secondItem="MY7-Af-DCQ" secondAttribute="bottom" constant="16" id="1ka-ng-D0i"/>
+                            <constraint firstItem="6MN-Lf-MEu" firstAttribute="top" secondItem="MY7-Af-DCQ" secondAttribute="bottom" constant="16" id="90f-Iw-upB"/>
+                            <constraint firstItem="hfD-rM-fVS" firstAttribute="top" secondItem="NQ5-rv-5aW" secondAttribute="top" id="GmL-uA-8Xp"/>
+                            <constraint firstItem="xzm-nV-gYw" firstAttribute="leading" secondItem="NQ5-rv-5aW" secondAttribute="leading" constant="16" id="H31-K4-xJH"/>
+                            <constraint firstItem="MY7-Af-DCQ" firstAttribute="leading" secondItem="NQ5-rv-5aW" secondAttribute="leading" id="SoS-dg-dFU"/>
+                            <constraint firstAttribute="trailing" secondItem="MY7-Af-DCQ" secondAttribute="trailing" id="bFX-Xx-GfF"/>
+                            <constraint firstAttribute="bottom" secondItem="xzm-nV-gYw" secondAttribute="bottom" constant="16" id="bTY-RE-5A7"/>
+                            <constraint firstItem="6uG-GC-2wR" firstAttribute="centerY" secondItem="hfD-rM-fVS" secondAttribute="centerY" id="cGk-o3-wG8"/>
+                            <constraint firstItem="6uG-GC-2wR" firstAttribute="centerX" secondItem="hfD-rM-fVS" secondAttribute="centerX" constant="-3" id="fkM-tV-bzE"/>
+                            <constraint firstAttribute="trailing" secondItem="uYx-Qo-fdl" secondAttribute="trailing" constant="10" id="lQ2-R8-d71"/>
+                            <constraint firstItem="6MN-Lf-MEu" firstAttribute="leading" secondItem="xzm-nV-gYw" secondAttribute="trailing" constant="16" id="phb-Mj-bbC"/>
+                            <constraint firstItem="hfD-rM-fVS" firstAttribute="leading" secondItem="NQ5-rv-5aW" secondAttribute="leading" id="qe4-7a-2kS"/>
+                            <constraint firstItem="MY7-Af-DCQ" firstAttribute="top" secondItem="NQ5-rv-5aW" secondAttribute="top" id="tBA-TV-JSI"/>
+                            <constraint firstItem="uYx-Qo-fdl" firstAttribute="bottom" secondItem="MY7-Af-DCQ" secondAttribute="bottom" constant="-10" id="yeQ-Iw-YjC"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                <constraints>
+                    <constraint firstItem="NQ5-rv-5aW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="lbs-Qb-hCC"/>
+                    <constraint firstAttribute="bottom" secondItem="NQ5-rv-5aW" secondAttribute="bottom" constant="16" id="t4Z-A9-qm4"/>
+                    <constraint firstAttribute="trailing" secondItem="NQ5-rv-5aW" secondAttribute="trailing" constant="16" id="vLK-js-hFJ"/>
+                    <constraint firstItem="NQ5-rv-5aW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="vu4-MD-nfx"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="ScenicImageView" destination="MY7-Af-DCQ" id="TlL-EJ-T36"/>
+                <outlet property="allView" destination="NQ5-rv-5aW" id="7Vg-hz-IAe"/>
+                <outlet property="headImageView" destination="6MN-Lf-MEu" id="m9I-9r-Hxa"/>
+                <outlet property="lineNameLabel" destination="xzm-nV-gYw" id="qfm-KX-eGh"/>
+                <outlet property="numLabel" destination="6uG-GC-2wR" id="sqy-FL-4xf"/>
+                <outlet property="transporImageView" destination="uYx-Qo-fdl" id="RIF-ux-RoU"/>
+            </connections>
+            <point key="canvasLocation" x="-28" y="-26"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Mask" width="89" height="34"/>
+        <image name="default" width="24" height="24"/>
+        <image name="placeholder_rec" width="540" height="360"/>
+    </resources>
+</document>

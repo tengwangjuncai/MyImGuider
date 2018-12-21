@@ -15,8 +15,6 @@
 		3009846D213E73D000D54E27 /* TabItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3009846B213E73D000D54E27 /* TabItemCell.xib */; };
 		30098471213E893D00D54E27 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3009846F213E893D00D54E27 /* ItemCell.swift */; };
 		30098472213E893D00D54E27 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30098470213E893D00D54E27 /* ItemCell.xib */; };
-		3027FA9121786560003ECF0E /* ContainerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3027FA8F21786560003ECF0E /* ContainerCell.swift */; };
-		3027FA9221786560003ECF0E /* ContainerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3027FA9021786560003ECF0E /* ContainerCell.xib */; };
 		3027FA9421799046003ECF0E /* ContentTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3027FA9321799045003ECF0E /* ContentTableView.swift */; };
 		3039DB0421393BB9008855E2 /* TabBarVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3039DB0321393BB9008855E2 /* TabBarVCViewController.swift */; };
 		3039DB0621393CBB008855E2 /* BaseNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3039DB0521393CBB008855E2 /* BaseNavigationVC.swift */; };
@@ -106,6 +104,8 @@
 		30F6645B217475A100D46E56 /* photograph@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30F66454217475A100D46E56 /* photograph@2x.png */; };
 		30F6645C217475A100D46E56 /* 闪光灯-开.png in Resources */ = {isa = PBXBuildFile; fileRef = 30F66455217475A100D46E56 /* 闪光灯-开.png */; };
 		30F6645D217475A100D46E56 /* icon-摄像头切换-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 30F66456217475A100D46E56 /* icon-摄像头切换-3.png */; };
+		30FB7C6F21BFAA4D005A1C96 /* ContainerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FB7C6D21BFAA4D005A1C96 /* ContainerCell.swift */; };
+		30FB7C7021BFAA4D005A1C96 /* ContainerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30FB7C6E21BFAA4D005A1C96 /* ContainerCell.xib */; };
 		B58A53DE4D848DD616DFF071 /* Pods_MyImGuider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14395AEE119DBAD7D5B0B1D4 /* Pods_MyImGuider.framework */; };
 /* End PBXBuildFile section */
 
@@ -119,8 +119,6 @@
 		3009846B213E73D000D54E27 /* TabItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabItemCell.xib; sourceTree = "<group>"; };
 		3009846F213E893D00D54E27 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		30098470213E893D00D54E27 /* ItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
-		3027FA8F21786560003ECF0E /* ContainerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContainerCell.swift; path = ../../../../../../ContainerCell.swift; sourceTree = "<group>"; };
-		3027FA9021786560003ECF0E /* ContainerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ContainerCell.xib; path = ../../../../../../ContainerCell.xib; sourceTree = "<group>"; };
 		3027FA9321799045003ECF0E /* ContentTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableView.swift; sourceTree = "<group>"; };
 		3039DB0321393BB9008855E2 /* TabBarVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVCViewController.swift; sourceTree = "<group>"; };
 		3039DB0521393CBB008855E2 /* BaseNavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationVC.swift; sourceTree = "<group>"; };
@@ -215,6 +213,8 @@
 		30F66454217475A100D46E56 /* photograph@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photograph@2x.png"; sourceTree = "<group>"; };
 		30F66455217475A100D46E56 /* 闪光灯-开.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "闪光灯-开.png"; sourceTree = "<group>"; };
 		30F66456217475A100D46E56 /* icon-摄像头切换-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-摄像头切换-3.png"; sourceTree = "<group>"; };
+		30FB7C6D21BFAA4D005A1C96 /* ContainerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerCell.swift; sourceTree = "<group>"; };
+		30FB7C6E21BFAA4D005A1C96 /* ContainerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContainerCell.xib; sourceTree = "<group>"; };
 		521CEA0556B45CEE5DFD5B9F /* Pods-MyImGuider.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyImGuider.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyImGuider/Pods-MyImGuider.debug.xcconfig"; sourceTree = "<group>"; };
 		75A29B4745391326E34F288C /* Pods-MyImGuider.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyImGuider.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyImGuider/Pods-MyImGuider.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -453,14 +453,14 @@
 		30A2BEC221534633004B96B0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				30FB7C6D21BFAA4D005A1C96 /* ContainerCell.swift */,
+				30FB7C6E21BFAA4D005A1C96 /* ContainerCell.xib */,
 				30A2BEC32153470C004B96B0 /* TripHeaderCell.swift */,
 				30A2BEC42153470C004B96B0 /* TripHeaderCell.xib */,
 				30A2BEC721537D91004B96B0 /* DayArrangeCell.swift */,
 				30A2BEC821537D91004B96B0 /* DayArrangeCell.xib */,
 				30E3700B21785AFB00CFCE92 /* TripArrangeVC.swift */,
 				30E3700C21785AFB00CFCE92 /* TripArrangeVC.xib */,
-				3027FA8F21786560003ECF0E /* ContainerCell.swift */,
-				3027FA9021786560003ECF0E /* ContainerCell.xib */,
 				3027FA9321799045003ECF0E /* ContentTableView.swift */,
 			);
 			path = View;
@@ -815,7 +815,7 @@
 				30098461213D5CCA00D54E27 /* CityCollectionCell.xib in Resources */,
 				30DB8F352150D074006FFCFE /* RaidersVC.xib in Resources */,
 				30585BB7214175DC00E3087E /* CityScenicCell.xib in Resources */,
-				3027FA9221786560003ECF0E /* ContainerCell.xib in Resources */,
+				30FB7C7021BFAA4D005A1C96 /* ContainerCell.xib in Resources */,
 				30DB8EE82143F3E7006FFCFE /* ScenicVC.xib in Resources */,
 				30DB8EFD2146C52B006FFCFE /* ScenicRecordsVC.xib in Resources */,
 				30F6644E2174757F00D46E56 /* MyCamera.xib in Resources */,
@@ -952,9 +952,9 @@
 				3039DB402139555E008855E2 /* ConstraintsHelper.swift in Sources */,
 				30585BB12141286400E3087E /* LineModel.swift in Sources */,
 				3039DB3E2139555E008855E2 /* Rotatable.swift in Sources */,
+				30FB7C6F21BFAA4D005A1C96 /* ContainerCell.swift in Sources */,
 				30585BB321412B6100E3087E /* CityPageModel.swift in Sources */,
 				3039DB0421393BB9008855E2 /* TabBarVCViewController.swift in Sources */,
-				3027FA9121786560003ECF0E /* ContainerCell.swift in Sources */,
 				30DB8F022147B1CE006FFCFE /* ScenicRecordCell.swift in Sources */,
 				3039DB3F2139555E008855E2 /* ScreenShotHelper.swift in Sources */,
 				3039DB47213D04AE008855E2 /* NetManager.swift in Sources */,

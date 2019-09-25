@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         UITabBar.appearance().tintColor = UIColor.cyan
         window = UIWindow.init()
@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //主屏幕
         let naVC = BaseNavigationVC()
-        naVC.addChildViewController(MenuCityVC())
+        naVC.addChild(MenuCityVC())
         
         
         
@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         return
                     }
         
-                    if event.type == UIEventType.remoteControl {
+        if event.type == UIEvent.EventType.remoteControl {
                         switch event.subtype {
                         case .remoteControlTogglePlayPause:
                             print("暂停/播放")

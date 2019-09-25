@@ -61,14 +61,8 @@ public extension ExpandingViewController {
         }
 
         viewController.transitionDriver = transitionDriver
-        var insets:Bool = false
-        if #available(iOS 11.0, *){
-            collectionView.contentInsetAdjustmentBehavior = .never
-        }else{
-            insets  = viewController.automaticallyAdjustsScrollViewInsets
-        }
-       
-//        let
+        let insets = false
+//        viewController.automaticallyAdjustsScrollViewInsets
         let tabBarHeight = insets == true ? navigationController.navigationBar.frame.size.height : 0
         let stausBarHeight = insets == true ? UIApplication.shared.statusBarFrame.size.height : 0
         let backImage = getBackImage(viewController, headerHeight: viewController.headerHeight)
@@ -79,9 +73,8 @@ public extension ExpandingViewController {
                                                        headerHeight: viewController.headerHeight,
                                                        insets: tabBarHeight + stausBarHeight) { headerView in
             viewController.tableView.tableHeaderView = headerView
-            self.navigationController?.pushViewController(viewController, animated:false)
+            self.navigationController?.pushViewController(viewController, animated: false)
         }
-        
     }
 }
 
@@ -112,6 +105,8 @@ extension ExpandingViewController {
         let imageSize = CGSize(width: viewController.view.bounds.width, height: viewController.view.bounds.height - headerHeight)
         let imageFrame = CGRect(origin: CGPoint(x: 0, y: 0), size: imageSize)
         return viewController.view.takeSnapshot(imageFrame)
+        
+//        viewController.view.bounds.height - headerHeight
     }
 }
 

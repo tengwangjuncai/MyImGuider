@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import SideMenu
 
+
 class MenuCityVC: ExpandingViewController {
 
     var pageLabel:UILabel!
@@ -18,8 +19,7 @@ class MenuCityVC: ExpandingViewController {
     fileprivate lazy  var bgImageView : UIImageView = {[weak self] in
         
         let bg = UIImageView(frame: (self?.view.bounds)!)
-        bg.image = Image(named: "BackgroundImage")
-        
+        bg.image = UIImage(named: "BackgroundImage")
         return bg
     }()
     
@@ -60,24 +60,39 @@ extension MenuCityVC {
         view.insertSubview(bgImageView, belowSubview: collectionView!)//设置背景
         
         var img = UIImage(named:"searchIcon")
-        img = img?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        let leftItem1 = UIBarButtonItem(image: img, style: UIBarButtonItemStyle.plain, target: self, action: #selector(goSearch))
+        img = img?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        let leftItem1 = UIBarButtonItem(image: img, style: UIBarButtonItem.Style.plain, target: self, action: #selector(goSearch))
         var img3 = UIImage(named:"侧滑栏")
-        img3 = img3?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        let leftItem3 = UIBarButtonItem(image: img3, style: UIBarButtonItemStyle.plain, target: self, action: #selector(goLeft))
+        img3 = img3?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        let leftItem3 = UIBarButtonItem(image: img3, style: UIBarButtonItem.Style.plain, target: self, action: #selector(goLeft))
         self.navigationItem.leftBarButtonItems = [leftItem3,leftItem1]
         
         var img2 = UIImage(named:"Circle")
-        img2 = img2?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        let rightItem = AnimatingBarButton(image: img2, style: UIBarButtonItemStyle.plain, target: self, action: #selector(goSearch))
+        img2 = img2?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        let rightItem = AnimatingBarButton(image: img2, style: UIBarButtonItem.Style.plain, target: self, action: #selector(goSearch))
         rightItem.normalImageName = "Circle"
         rightItem.selectedImageName = "CloseButton"
         
+        rightItem.setup()
+        
         self.navigationItem.rightBarButtonItem = rightItem
         
-         navBarBackgroundAlpha = 0
+        navBarBackgroundAlpha = 0
         navBarShadowImageHidden = true
-         statusBarStyle = .lightContent
+        statusBarStyle = .lightContent
+        navBarTitleColor = UIColor.white
+        
+//        if #available(iOS 11.0, *){
+//            
+//            self.collectionView!.contentInsetAdjustmentBehavior = .never
+//        }else{
+//            self.automaticallyAdjustsScrollViewInsets = false
+//        }
+        
+       
+        
+        
+        
         //导航条全透明
 //     1.设置导航栏标题属性：设置标题颜色
         
@@ -95,7 +110,9 @@ extension MenuCityVC {
         
             sideMenuNav.navigationBar.isHidden = true
         SideMenuManager.defaultManager.menuLeftNavigationController = sideMenuNav
+        
         SideMenuManager.defaultManager.menuAnimationBackgroundColor = UIColor.init(patternImage: UIImage(named: "bgColor")!)
+//        UIColor.init(patternImage: UIImage(named: "bgColor")!)
 //        UIColor.init(red: 199/255.0, green: 208/255.0, blue: 215/255.0, alpha: 1)
         SideMenuManager.default.menuPresentMode = .viewSlideInOut
         SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
@@ -104,7 +121,7 @@ extension MenuCityVC {
         //    SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
         
         SideMenuManager.default.menuFadeStatusBar = false
-        SideMenuManager.default.menuAnimationTransformScaleFactor = 0.85
+        SideMenuManager.default.menuAnimationTransformScaleFactor = 0.65
        
     }
     
@@ -244,11 +261,15 @@ extension MenuCityVC {
             pushToViewController(cityVC)
             if let rightButton = navigationItem.rightBarButtonItem as? AnimatingBarButton {
                 
+                
+                
                 rightButton.animationSelected(true)
             }
         }
         
     }
+    
+    
     
     
 }

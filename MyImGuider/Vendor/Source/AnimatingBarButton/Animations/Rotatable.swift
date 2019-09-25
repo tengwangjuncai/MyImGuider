@@ -28,15 +28,21 @@ extension Rotatable {
 
         toItem.layer.add(toRotate, forKey: nil)
         toItem.layer.add(toOpacity, forKey: nil)
+        
+
     }
 
     fileprivate func animationFrom(_ from: Double, to: Double, key: String, duration: Double) -> CABasicAnimation {
+        
         return Init(CABasicAnimation(keyPath: key)) {
             $0.duration = duration
             $0.fromValue = from
             $0.toValue = to
-            $0.fillMode = kCAFillModeForwards
+            $0.fillMode = CAMediaTimingFillMode.forwards
             $0.isRemovedOnCompletion = false
         }
     }
+    
+
+    
 }

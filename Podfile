@@ -15,6 +15,7 @@ target 'MyImGuider' do
    pod 'UIColor+FlatColors'
    pod 'Bugly'
    pod 'YBPopupMenu', '~> 1.1.2'
+#   pod 'expanding-collection'
 end
 
 

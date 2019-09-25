@@ -43,19 +43,19 @@ extension TripOverViewVC {
         self.tableView.register(SectionHeaderView.self, forHeaderFooterViewReuseIdentifier: "SectionHeaderView")
         
         //tableView 自适应高度
-                self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
                 self.tableView.estimatedRowHeight = 100
     }
     
     func configNavBar(){
         
         var img = UIImage(named:"设置-4") 
-        img = img?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        let leftItem = UIBarButtonItem(image: img, style: UIBarButtonItemStyle.plain, target: self, action: #selector(goSetVC))
+        img = img?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        let leftItem = UIBarButtonItem(image: img, style: UIBarButtonItem.Style.plain, target: self, action: #selector(goSetVC))
         self.navigationItem.leftBarButtonItem = leftItem
         var img2 = UIImage(named:"历史-3")
-        img2 = img2?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        let rightItem = UIBarButtonItem(image: img2, style: UIBarButtonItemStyle.plain, target: self, action: #selector(goAllTrip))
+        img2 = img2?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        let rightItem = UIBarButtonItem(image: img2, style: UIBarButtonItem.Style.plain, target: self, action: #selector(goAllTrip))
         self.navigationItem.rightBarButtonItem = rightItem
         
     }

@@ -8,15 +8,9 @@
 
 import UIKit
 
-/* 其大意就是说，可以将自定义的代码实时渲染到Interface Builder中。而它们之间的桥梁就是通过两个指令来完成，即@IBDesignable和@IBInspectable。我们通过@IBDesignable告诉Interface Builder这个类可以实时渲染到界面中，但是这个类必须是UIView或者NSView的子类。通过@IBInspectable可以定义动态属性，即可在attribute inspector面板中可视化修改属性值。
- 
- 话不多说，下面举一个简单的例子，这个例子自定义一个UIView的子类，该子类拥有一个UIButton。 */
-
-
 /// Base class for UICollectionViewCell
 open class BasePageCollectionCell: UICollectionViewCell {
-    
-  
+
     /// DEPRECATED! Animation oposition offset when cell is open
     @IBInspectable open var yOffset: CGFloat = 40
     /// Spacing between centers of views
@@ -141,7 +135,7 @@ extension BasePageCollectionCell {
         isOpened = isOpen
 
         if animated == true {
-            UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions(), animations: {
+            UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions(), animations: {
                 self.contentView.layoutIfNeeded()
             }, completion: nil)
         } else {
@@ -182,8 +176,8 @@ extension BasePageCollectionCell {
         contentView.insertSubview(shadow, belowSubview: view)
 
         // create constraints
-        let sizeConstaints: [(NSLayoutAttribute, CGFloat)] = [(NSLayoutAttribute.width, 0.8), (NSLayoutAttribute.height, 0.9)]
-        for info: (attribute: NSLayoutAttribute, scale: CGFloat) in sizeConstaints {
+        let sizeConstaints: [(NSLayoutConstraint.Attribute, CGFloat)] = [(NSLayoutConstraint.Attribute.width, 0.8), (NSLayoutConstraint.Attribute.height, 0.9)]
+        for info: (attribute: NSLayoutConstraint.Attribute, scale: CGFloat) in sizeConstaints {
             if let frontViewConstraint = view.getConstraint(info.attribute) {
                 shadow >>>- {
                     $0.attribute = info.attribute
@@ -193,8 +187,8 @@ extension BasePageCollectionCell {
             }
         }
         
-        let centerConstraints: [(NSLayoutAttribute, CGFloat)] = [(NSLayoutAttribute.centerX, 0), (NSLayoutAttribute.centerY, 30)]
-        for info: (attribute: NSLayoutAttribute, offset: CGFloat) in centerConstraints {
+        let centerConstraints: [(NSLayoutConstraint.Attribute, CGFloat)] = [(NSLayoutConstraint.Attribute.centerX, 0), (NSLayoutConstraint.Attribute.centerY, 30)]
+        for info: (attribute: NSLayoutConstraint.Attribute, offset: CGFloat) in centerConstraints {
             (contentView, shadow, view) >>>- {
                 $0.attribute = info.attribute
                 $0.constant = info.offset

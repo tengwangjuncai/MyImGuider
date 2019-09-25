@@ -16,6 +16,8 @@ class AccountVC: BaseViewController {
         self.view.backgroundColor = UIColor.white
         // Do any additional setup after loading the view.
         self.view.backgroundColor = UIColor.clear
+        
+//        self.setup()
     }
 
     override func didReceiveMemoryWarning() {

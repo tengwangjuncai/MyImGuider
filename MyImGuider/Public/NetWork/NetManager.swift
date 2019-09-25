@@ -24,7 +24,7 @@ public enum NetType {
     case allViews(Int) //获取城市下所有景点
     case scenicDetail(String) //获取景点下的所有讲解
     case allGuiderByCityID(Int) //获取城市下的所有导游
-    
+    case cityRaidersByCityID(Int) //获取城市下的旅游导览
 }
 
 //请求配置
@@ -36,7 +36,7 @@ extension NetType: TargetType {
         
         switch self {
     
-        case .allCity,.cityPage(_),.recommendCity,.allCityTour(_),.allViews(_),.scenicDetail(_),.allGuiderByCityID(_):
+        case .allCity,.cityPage(_),.recommendCity,.allCityTour(_),.allViews(_),.scenicDetail(_),.allGuiderByCityID(_),.cityRaidersByCityID(_):
             return  URL(string: "https://www.imguider.com/tourist/services/")!
         }
        
@@ -59,6 +59,9 @@ extension NetType: TargetType {
             return "viewandguides/\(scenicID)/v2"
         case .allGuiderByCityID(let cityID):
             return "city/\(cityID)/guiders"
+        case .cityRaidersByCityID(_):
+            return "strategy/page"
+            
         }
         
     }
@@ -68,7 +71,7 @@ extension NetType: TargetType {
         switch self {
         case .recommendCity,.allCity,.cityPage(_),.scenicDetail(_):
         return .get
-        case .allCityTour(_),.allViews(_),.allGuiderByCityID(_):
+        case .allCityTour(_),.allViews(_),.allGuiderByCityID(_),.cityRaidersByCityID(_):
         return .post
        
         }
@@ -99,6 +102,14 @@ extension NetType: TargetType {
             params["pagesize"] = 0
             
             return .requestParameters(parameters: params, encoding:JSONEncoding.default)
+        case .cityRaidersByCityID(let cityID):
+            var params = Dictionary<String, Any>()
+            params["city"] = cityID
+            params["type"] = 1
+            params["status"] = 2
+            
+            return .requestParameters(parameters: params, encoding:JSONEncoding.default)
+            
         default:
             return  .requestPlain
         }

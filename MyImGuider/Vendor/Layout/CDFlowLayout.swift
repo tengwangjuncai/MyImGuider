@@ -15,7 +15,7 @@ class CDFlowLayout: UICollectionViewFlowLayout {
         var offsetAdjustment = CGFloat(MAXFLOAT)   //当前处理器能处理的最大浮点数
         let horizontalCenter = proposedContentOffset.x + (self.collectionView!.bounds.width / 2.0)//collectionView落在屏幕中点的x坐标
         let targetRect = CGRect(x: proposedContentOffset.x, y: 0.0, width:  self.collectionView!.bounds.size.width, height: self.collectionView!.bounds.size.height)
-        let array = super.layoutAttributesForElements(in: targetRect) as [UICollectionViewLayoutAttributes]! //目标区域中包含的cell
+        let array = super.layoutAttributesForElements(in: targetRect) as [UICollectionViewLayoutAttributes]? //目标区域中包含的cell
         for layoutAttributes in array!{
             let itemHorizontalCenter = layoutAttributes.center.x
             if(abs(itemHorizontalCenter-horizontalCenter) < abs(offsetAdjustment)){   //ABS求绝对值

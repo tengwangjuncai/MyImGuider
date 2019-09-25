@@ -41,7 +41,7 @@ extension CityVC {
         
 //        self.title = ""
         self.view.backgroundColor = UIColor.white
-        tableView.backgroundView = UIImageView(image: Asset.backgroundImage.image)
+//        tableView.backgroundView = UIImageView(image: UIImage(named: "BackgroundImage"))
        
         
         if #available(iOS 11.0, *){
@@ -86,16 +86,16 @@ extension CityVC {
     func configNavBar(){
         
         var img = UIImage(named:"searchIcon")
-        img = img?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        let leftItem = UIBarButtonItem(image: img, style: UIBarButtonItemStyle.plain, target: self, action: #selector(goSearch))
+        img = img?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        let leftItem = UIBarButtonItem(image: img, style: UIBarButtonItem.Style.plain, target: self, action: #selector(goSearch))
         var img3 = UIImage(named:"侧滑栏")
-        img3 = img3?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        let leftItem3 = UIBarButtonItem(image: img3, style: UIBarButtonItemStyle.plain, target: self, action: #selector(backLeft))
+        img3 = img3?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        let leftItem3 = UIBarButtonItem(image: img3, style: UIBarButtonItem.Style.plain, target: self, action: #selector(backLeft))
         
         self.navigationItem.leftBarButtonItems = [leftItem3,leftItem]
         var img2 = UIImage(named:"CloseButton")
-        img2 = img2?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        let rightItem = UIBarButtonItem(image: img2, style: UIBarButtonItemStyle.plain, target: self, action: #selector(back))
+        img2 = img2?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        let rightItem = UIBarButtonItem(image: img2, style: UIBarButtonItem.Style.plain, target: self, action: #selector(back))
         self.navigationItem.rightBarButtonItem = rightItem
         
         self.customNav = UIView.init(frame:CGRect(x: 0, y: 0, width: kScreenWidth, height: kNavigationHeight))
@@ -167,8 +167,9 @@ extension CityVC {
             
         case .CityTourItem:
             
-          let  cityTourVC = CityTourVC()
+          let  cityTourVC = CityTour2VC()
             cityTourVC.title = "城市导览"
+            cityTourVC.cityID = self.cityID
             self.navigationController?.pushViewController(cityTourVC, animated: true)
             
         case .GuiderItem:
@@ -180,7 +181,7 @@ extension CityVC {
              self.navigationController?.pushViewController(guiderVC, animated: true)
         case .RaidersItem:
             
-            let vc = TripArrangeVC() //TripOverViewVC()
+            let vc = RaidersVC() //TripOverViewVC()
             
             self.navigationController?.pushViewController(vc, animated: true)
             
@@ -197,7 +198,7 @@ extension CityVC {
     
    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
     
-    if scrollView.contentOffset.y < -45,let navigationControlller = navigationController{
+    if scrollView.contentOffset.y < -65,let navigationControlller = navigationController{
         
         for case let vc as MenuCityVC in navigationControlller.viewControllers {
             if case let rightButton as AnimatingBarButton = vc.navigationItem.rightBarButtonItem {
@@ -231,16 +232,16 @@ extension CityVC {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 3
+        return (self.cityPageModel != nil) ? 3:0
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if section == 0 || section == 1 {
             
-            return 1;
+            return (self.cityPageModel != nil) ? 1:0;
         }
-        return self.cityPageModel?.customlines?.count ?? 3
+        return self.cityPageModel?.customlines?.count ?? 0
     }
     
 

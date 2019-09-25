@@ -26,27 +26,12 @@ class AnimatingBarButton: UIBarButtonItem, Rotatable {
 
     let normalView = UIImageView(frame: .zero)
     let selectedView = UIImageView(frame: .zero)
-    
-    override init() {
-        super.init()
-        
-        let view = CustomView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
-        view.onLayoutSubviews = { [weak self] in self?.configurateImageViews() }
-        customView = view
-    }
-    
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
 
 // MARK: life cicle
 
 extension AnimatingBarButton {
-    
-  
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         let view = CustomView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
@@ -54,7 +39,15 @@ extension AnimatingBarButton {
         customView = view
     }
     
-  
+   func setup(){
+    
+    let view = CustomView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+    view.onLayoutSubviews = { [weak self] in self?.configurateImageViews() }
+    customView = view
+    
+    }
+    
+    
    
 }
 
@@ -84,7 +77,7 @@ extension AnimatingBarButton {
 
     fileprivate func configureImageView(_ imageView: UIImageView, imageName: String) {
         guard let customView = customView else { return }
-        guard let image = UIImage(named: imageName)?.withRenderingMode(UIImageRenderingMode.alwaysOriginal) else { return }
+        guard let image = UIImage(named: imageName)?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal) else { return }
 
         imageView.image = image
         imageView.contentMode = .scaleAspectFit
@@ -94,6 +87,7 @@ extension AnimatingBarButton {
         imageView.layer.shadowRadius = 0.6
         imageView.layer.shadowOffset = CGSize(width: 0, height: 1.5)
         imageView.layer.shadowOpacity = 0.3
+//        imageView.backgroundColor = UIColor.red
 
         let x = (customView.bounds.size.width - image.size.width) / 2 + 12
         let y = (customView.bounds.size.height - image.size.height) / 2

@@ -33,15 +33,8 @@ extension ExpandingTableViewController {
         guard let navigationController = self.navigationController else {
             return 0
         }
-       
-        var insets:Bool = false
-        if #available(iOS 11.0, *){
-            tableView.contentInsetAdjustmentBehavior = .never
-        }else{
-            insets  = self.automaticallyAdjustsScrollViewInsets
-        }
-        
-//        let insets = automaticallyAdjustsScrollViewInsets
+
+        let insets = automaticallyAdjustsScrollViewInsets
         let tabBarHeight = insets == true ? navigationController.navigationBar.frame.size.height : 0
         let stausBarHeight = insets == true ? UIApplication.shared.statusBarFrame.size.height : 0
         return tabBarHeight + stausBarHeight

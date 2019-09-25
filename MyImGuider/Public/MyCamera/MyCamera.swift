@@ -89,18 +89,18 @@ class MyCamera: UIViewController,AVCapturePhotoCaptureDelegate {
         case 0:
             device!.flashMode = AVCaptureDevice.FlashMode.on
             self.flashBtn.setImage(UIImage(named: "闪光灯-开")
-                , for: UIControlState.normal)
+                , for: UIControl.State.normal)
             break
         case 1:
             device.flashMode = AVCaptureDevice.FlashMode.auto
             self.flashBtn.setImage(UIImage(named: "闪光灯-关")
-                , for: UIControlState.normal)
+                , for: UIControl.State.normal)
             break
         default:
             
             device!.flashMode = AVCaptureDevice.FlashMode.off
             self.flashBtn.setImage(UIImage(named: "闪光灯-关")
-                , for: UIControlState.normal)
+                , for: UIControl.State.normal)
         }
         
         device.unlockForConfiguration()
@@ -179,7 +179,7 @@ extension MyCamera {
         if authStatus == AVAuthorizationStatus.restricted || authStatus == AVAuthorizationStatus.denied {
             
             // 无权限 引导去开启
-            guard let url = URL(string: UIApplicationOpenSettingsURLString)   else {return}
+            guard let url = URL(string: UIApplication.openSettingsURLString)   else {return}
             if UIApplication.shared.canOpenURL(url) {
                 
                 UIApplication.shared.openURL(url)
@@ -202,7 +202,7 @@ extension MyCamera {
         
         self.view.addGestureRecognizer(tap)
         
-        flashBtn.setImage(UIImage(named: "闪光灯-关"), for: UIControlState.normal)
+        flashBtn.setImage(UIImage(named: "闪光灯-关"), for: UIControl.State.normal)
         isFlashOn = false
     }
     

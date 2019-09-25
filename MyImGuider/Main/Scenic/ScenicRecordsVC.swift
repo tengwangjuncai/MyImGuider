@@ -15,6 +15,8 @@ class ScenicRecordsVC: BaseViewController,UITableViewDelegate,UITableViewDataSou
     var scenic : Scenic?
     weak var superVC : ScenicVC?
     var isTop : Bool = true
+    var isAnimation = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -38,6 +40,7 @@ extension ScenicRecordsVC {
     
     func setup(){
         
+        self.view.backgroundColor = UIColor.white
         self.title = scenic?.viewname
         self.headerImageView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenWidth/16 * 9)
         self.headerImageView.contentMode = .scaleAspectFill
@@ -57,7 +60,7 @@ extension ScenicRecordsVC {
         if #available(iOS 11.0, *){
             tableView.contentInsetAdjustmentBehavior = .never
         }else{
-            self.automaticallyAdjustsScrollViewInsets = true
+            self.automaticallyAdjustsScrollViewInsets = false
         }
         
         self.view.backgroundColor = kThemeBgColor
@@ -96,6 +99,10 @@ extension ScenicRecordsVC {
                 
                 self.scenic = scenic
                 
+                if(!self.isAnimation){
+                    let iconUrl = URL(string: self.scenic?.pictures?.components(separatedBy:",").first ?? "")
+                    self.headerImageView.kf.setImage(with: iconUrl, placeholder: UIImage(named: "placeholder_rec"), options: nil, progressBlock: nil, completionHandler: nil)
+                }
                 self.tableView.reloadData()
                 
             }

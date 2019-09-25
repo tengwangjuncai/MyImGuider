@@ -70,7 +70,7 @@ class WPY_AVPlayer: NSObject {
     var isEmptyBufferPause : Bool = false //没加载玩是否暂停
     var isFinish : Bool = false      //是否播放结束
     var isSeekingToTime : Bool = false // 是否正在拖动slide  调整播放时间
-    var bgTaskId : UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid //后台播放申请ID
+    var bgTaskId : UIBackgroundTaskIdentifier = UIBackgroundTaskIdentifier.invalid //后台播放申请ID
     
     var durantion : TimeInterval?
     var progress : Float?
@@ -97,7 +97,7 @@ class WPY_AVPlayer: NSObject {
         self.player.rate = 1.0
         
         //APP进入后台通知
-        NotificationCenter.default.addObserver(self, selector: #selector(configLockScreenPlay) , name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(configLockScreenPlay) , name: UIApplication.didEnterBackgroundNotification, object: nil)
         
         // 开启后台处理多媒体事件
         UIApplication.shared.beginReceivingRemoteControlEvents()
@@ -106,16 +106,16 @@ class WPY_AVPlayer: NSObject {
         
          try? session.setActive(true)
         //后台播放
-       try? session.setCategory(AVAudioSessionCategoryPlayback)
+        try? session.setCategory(AVAudioSession.Category.playback)
     }
     
     func currentItemAddObserver(){
         
         //监听是否靠近耳朵
-        NotificationCenter.default.addObserver(self, selector: #selector(sensorStateChange), name: NSNotification.Name.UIDeviceProximityStateDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(sensorStateChange), name: UIDevice.proximityStateDidChangeNotification, object: nil)
         
         //播放期间被 电话 短信 微信 等打断后的处理
-        NotificationCenter.default.addObserver(self, selector: #selector(handleInterreption(sender:)), name: NSNotification.Name.AVAudioSessionInterruption, object:AVAudioSession.sharedInstance())
+        NotificationCenter.default.addObserver(self, selector: #selector(handleInterreption(sender:)), name: AVAudioSession.interruptionNotification, object:AVAudioSession.sharedInstance())
         
         // 监控播放结束通知
         NotificationCenter.default.addObserver(self, selector: #selector(playMusicFinished), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.player.currentItem)
@@ -128,7 +128,7 @@ class WPY_AVPlayer: NSObject {
         //监控缓冲加载情况属性
         self.player.currentItem?.addObserver(self, forKeyPath:"loadedTimeRanges", options: [.new,.old], context: nil)
         
-       self.timeObserVer = self.player.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(1, 1), queue: DispatchQueue.main) { [weak self] (time) in
+        self.timeObserVer = self.player.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(1, preferredTimescale: 1), queue: DispatchQueue.main) { [weak self] (time) in
             
             guard let `self` = self else { return }
             
@@ -147,9 +147,9 @@ class WPY_AVPlayer: NSObject {
         self.player.currentItem?.removeObserver(self, forKeyPath:"status")
         self.player.currentItem?.removeObserver(self, forKeyPath:"loadedTimeRanges")
         
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceProximityStateDidChange, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIDevice.proximityStateDidChangeNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVAudioSessionInterruption, object: nil)
+        NotificationCenter.default.removeObserver(self, name: AVAudioSession.interruptionNotification, object: nil)
         
         if(self.timeObserVer != nil){
             self.player.removeTimeObserver(self.timeObserVer!)
@@ -162,7 +162,7 @@ class WPY_AVPlayer: NSObject {
     @objc func configLockScreenPlay() {
         //设置并激活音频会话类别
         let session = AVAudioSession.sharedInstance()
-        try? session.setCategory(AVAudioSessionCategoryPlayback)
+        try? session.setCategory(AVAudioSession.Category.playback)
         try? session.setActive(true)
         //允许应用接收远程控制
         if(self.isPlay){
@@ -170,9 +170,9 @@ class WPY_AVPlayer: NSObject {
         }
         
         //设置后台任务ID
-        var  newTaskID = UIBackgroundTaskInvalid
+        var  newTaskID = UIBackgroundTaskIdentifier.invalid
         newTaskID = UIApplication.shared.beginBackgroundTask(expirationHandler: nil)
-        if (newTaskID != UIBackgroundTaskInvalid) && (self.bgTaskId != UIBackgroundTaskInvalid)  {
+        if (newTaskID != UIBackgroundTaskIdentifier.invalid) && (self.bgTaskId != UIBackgroundTaskIdentifier.invalid)  {
             UIApplication.shared.endBackgroundTask(self.bgTaskId)
         }
         
@@ -188,11 +188,11 @@ class WPY_AVPlayer: NSObject {
             if UIDevice.current.proximityState == true {
                 
                 //靠近耳朵
-                try? session.setCategory(AVAudioSessionCategoryPlayAndRecord)
+                try? session.setCategory(AVAudioSession.Category.playAndRecord)
             }else {
                 
                 //远离耳朵
-                try? session.setCategory(AVAudioSessionCategoryPlayback)
+                try? session.setCategory(AVAudioSession.Category.playback)
             }
         }
     }
@@ -200,15 +200,15 @@ class WPY_AVPlayer: NSObject {
     @objc func handleInterreption(sender:NSNotification) {
         
         let info = sender.userInfo
-        guard let type : AVAudioSessionInterruptionType =  info?[AVAudioSessionInterruptionTypeKey] as? AVAudioSessionInterruptionType else { return } 
+        guard let type : AVAudioSession.InterruptionType =  info?[AVAudioSessionInterruptionTypeKey] as? AVAudioSession.InterruptionType else { return }
         
-        if type == AVAudioSessionInterruptionType.began {
+        if type == AVAudioSession.InterruptionType.began {
             
             self.pause()
         }else {
-            guard  let options = info![AVAudioSessionInterruptionOptionKey] as? AVAudioSessionInterruptionOptions else {return}
+            guard  let options = info![AVAudioSessionInterruptionOptionKey] as? AVAudioSession.InterruptionOptions else {return}
             
-            if(options == AVAudioSessionInterruptionOptions.shouldResume){
+            if(options == AVAudioSession.InterruptionOptions.shouldResume){
                 self.pause()
             }
         }
@@ -255,7 +255,7 @@ extension WPY_AVPlayer {
         
         for track : AVPlayerItemTrack in playerItem.tracks {
             
-            if track.assetTrack.mediaType == AVMediaType.audio {
+            if track.assetTrack?.mediaType == AVMediaType.audio {
                 
                 track.isEnabled = enable
             }
@@ -401,14 +401,14 @@ extension WPY_AVPlayer {
         self.isSeekingToTime = true
         if interval != 0 {
             
-            let seekTime = CMTimeMake(Int64(Float64(time) * interval), 1)
+            let seekTime = CMTimeMake(value: Int64(Float64(time) * interval), timescale: 1)
             self.player.seek(to: seekTime) { (complete) in
                 self.isSeekingToTime = false
                 self.setNowPlayingInfo()
             }
         }else {
             
-            let seekTime = CMTimeMake(0, 1)
+            let seekTime = CMTimeMake(value: 0, timescale: 1)
             self.player.seek(to: seekTime) { (complete) in
                 self.isSeekingToTime = false
                self.setNowPlayingInfo()

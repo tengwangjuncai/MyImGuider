@@ -63,11 +63,11 @@ extension ScenicVC {
         if #available(iOS 11.0, *){
             collectionView.contentInsetAdjustmentBehavior = .never
         }else{
-           self.automaticallyAdjustsScrollViewInsets = true
+           self.automaticallyAdjustsScrollViewInsets = false
         }
         
         self.collectionView.backgroundColor = UIColor.clear
-        self.view.backgroundColor = UIColor.init(patternImage: UIImage(named:"BackgroundImage")!)
+//        self.view.backgroundColor = UIColor.init(patternImage: UIImage(named:"BackgroundImage")!)
         
         self.view .addSubview(self.maskImageView)
         let  Y:CGFloat = kScreenWidth/16 * 9
@@ -156,6 +156,7 @@ extension ScenicVC {
     func pushVC(scenic: Scenic) {
         let recordsVC = ScenicRecordsVC()
         recordsVC.scenic = scenic
+        recordsVC.isAnimation = true
         recordsVC.superVC = self
         self.navigationController?.pushViewController(recordsVC, animated: false)
     }
@@ -163,6 +164,9 @@ extension ScenicVC {
     func exitAnimation(cell:ScenicCell){
        
         self.maskImageView.image = self.subVC.view.takeSnapshot(CGRect(x: 0, y: kHeaderImageHeight, width: kScreenWidth, height: kScreenHeight - kHeaderImageHeight))
+        self.maskImageView.isHidden = false
+        self.maskImageView.contentMode = .scaleAspectFill
+        self.maskImageView.backgroundColor = UIColor.white
         
         cell.disappearAnimation()
         UIView.animate(withDuration: 0.4) {
@@ -175,11 +179,17 @@ extension ScenicVC {
         
 //     
         cell.appearAnimation()
-        self.maskImageView.alpha = 0.9
-        UIView.animate(withDuration: 0.5) {
-            self.maskImageView.alpha = 0
-            
-        }
+        self.maskImageView.alpha = 0.5
+        self.maskImageView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        
+        self.maskImageView.isHidden = true
+        
+//        UIView.animate(withDuration: 0.5, animations: {
+//             self.maskImageView.alpha = 0.1
+//        }) { (isFinish) in
+//
+//            self.maskImageView.isHidden = true
+//        }
         self.currentCell = nil;
     }
 }

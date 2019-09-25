@@ -48,9 +48,9 @@ extension TabBarVCViewController {
         childVC.title = title as String
         
         var norImg = UIImage(named: normalImg as String)
-        norImg = norImg?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        norImg = norImg?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
         var selImg = UIImage(named: selectedImg as String)
-        selImg = selImg?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        selImg = selImg?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
         
         let tabItem = UITabBarItem(title: title as String, image: norImg, selectedImage: selImg)
         let naVC = BaseNavigationVC()
@@ -58,8 +58,8 @@ extension TabBarVCViewController {
         
         naVC.tabBarItem = tabItem
         
-        naVC.addChildViewController(childVC)
+        naVC.addChild(childVC)
         
-        addChildViewController(naVC)
+        addChild(naVC)
     }
  }

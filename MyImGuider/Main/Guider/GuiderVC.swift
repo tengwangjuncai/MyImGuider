@@ -49,7 +49,8 @@ extension GuiderVC {
         let url = URL(string: bgPic ?? "")
         self.maskImageView.alpha = 0
         self.bgImageView.kf.setImage(with: url, placeholder: UIImage(named: "bgColor"), options: nil, progressBlock: nil, completionHandler: nil)
-        self.maskImageView.image = self.bgImageView.image?.blurredImage(withRadius: 30, iterations: 5, tintColor: UIColor.black)
+        self.maskImageView.image = self.bgImageView.image?.blurredImage(withRadius: 20, iterations: 5, tintColor: UIColor.black)
+        self.maskImageView.contentMode = .scaleAspectFill
       
         
         swipeableView = ZLSwipeableView()

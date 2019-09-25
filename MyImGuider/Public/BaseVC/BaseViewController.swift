@@ -23,7 +23,8 @@ class BaseViewController: UIViewController {
         
         self.navigationController?.navigationBar.topItem?.title = "";
     }
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -112,14 +112,14 @@ class ScenicRecordCell: UITableViewCell {
         if  WPY_AVPlayer.playManager.isPlay{
             
             WPY_AVPlayer.playManager.pause()
-            sender.setBackgroundImage(UIImage(named: "scenic_Tryplay"), for: UIControlState.normal)
+            sender.setBackgroundImage(UIImage(named: "scenic_Tryplay"), for: UIControl.State.normal)
         }else {
             if WPY_AVPlayer.playManager.currentUrl == self.lineModel?.playpath {
                 WPY_AVPlayer.playManager.play()
             }else {
                 WPY_AVPlayer.playManager.playMusic(url: self.lineModel?.playpath ?? "", type: WPY_AVPlayerType.PlayTypeTry)
             }
-            sender.setBackgroundImage(UIImage(named: "scenic_Trypause"), for: UIControlState.normal)
+            sender.setBackgroundImage(UIImage(named: "scenic_Trypause"), for: UIControl.State.normal)
         }
         
     }
